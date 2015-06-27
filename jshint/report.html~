@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> jsHint Report </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <style>
+  html,body{
+  margin:0;
+  padding:0;
+  font-size:15px;
+  background:#1d1e1c;
+  }
+  .report{
+	color:#eee;
+  }
+  .report td.file{
+	color:#f8f8f2;
+	font-size:20px;
+	font-weight:bold;
+  }
+  .report td.error{
+	color:red;
+	text-indent:5px;
+	font-weight:bold;
+	border-left:2px solid red;
+	background:#000;
+  }
+  .report td.error-left{
+	border-left:1px solid red;
+  }
+  .report td.info{
+	color:#eee;
+  }
+  .report td.undef{
+	color:#ff0;
+	text-indent:5px;
+	font-weight:bold;
+	border-left:2px solid #ff0;
+	background:#000;
+  }
+  .report td.undef-left{
+	border-left:1px solid #ff0;
+  }
+  .report td.unused{
+	color:#ff8040;
+	text-indent:5px;
+	font-weight:bold;
+	border-left:2px solid #ff8040;
+	background:#000;
+  }
+  .report td{
+  	padding:3px;
+  }
+  .report td.unused-left{
+	padding:5px;
+	border-left:1px solid #ff8040;
+  }
+  .report td span{display:block,float:left;font-size:13px;padding:0 5px 0 5px;border-right:1px solid #555;}
+  td span.lc{
+  }
+  td span.raw{
+  	width:300px;
+  }
+  td span.code{
+  	width:30px;
+  }
+  td span.evidence{
+  	width:200px;
+  }
+  </style>
+ </head>
+
+ <body>
+  <table class="report">
+	<tr>
+		<td class="file" colspan="2">xxxx.js</td>
+	</tr>
+	<tr>
+		<td class="error" colspan="2">4 errors</td>
+	</tr>
+	<tr><td class="info error-left"><span class="code">W303</span><span class="lc">行:3,列:5</span><span class="raw">Expected an assignment or function call and instead saw an expression.</span><span class="code">W303</span><span class="evidence">var a = ;</span></td></tr>
+	<tr><td class="info error-left">15</td><td>Missing semicolon.</td></tr>
+	<tr><td class="info error-left">16</td><td>Missing semicolon.</td></tr>
+	<tr>
+		<td class="undef" colspan="2">2 warning</td>
+	</tr>
+	<tr><td class="info undef-left">15</td><td>Missing semicolon.</td></tr>
+	<tr><td class="info undef-left">16</td><td>Missing semicolon.</td></tr>
+	<tr>
+		<td class="unused" colspan="2">2 warning</td>
+	</tr>
+	<tr><td class="info unused-left">15</td><td>Missing semicolon.</td></tr>
+	<tr><td class="info unused-left">16</td><td>Missing semicolon.</td></tr>
+  </table>
+ </body>
+</html>

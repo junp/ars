@@ -51,8 +51,24 @@
 	border-left:2px solid #ff8040;
 	background:#000;
   }
+  .report td{
+  	padding:3px;
+  }
   .report td.unused-left{
+	padding:5px;
 	border-left:1px solid #ff8040;
+  }
+  .report td span{display:block,float:left;font-size:13px;padding:0 5px 0 5px;border-right:1px solid #555;}
+  td span.lc{
+  }
+  td span.raw{
+  	width:300px;
+  }
+  td span.code{
+  	width:30px;
+  }
+  td span.evidence{
+  	width:200px;
   }
   </style>
  </head>
@@ -65,7 +81,7 @@
 	<tr>
 		<td class="error" colspan="2">4 errors</td>
 	</tr>
-	<tr><td class="info error-left">1</td><td>Expected an assignment or function call and instead saw an expression.</td></tr>
+	<tr><td class="info error-left"><span class="lc">行:3,列:5</span><span class="raw">Expected an assignment or function call and instead saw an expression.</span><span class="code">W303</span><span class="evidence">var a = ;</span></td></tr>
 	<tr><td class="info error-left">15</td><td>Missing semicolon.</td></tr>
 	<tr><td class="info error-left">16</td><td>Missing semicolon.</td></tr>
 	<tr>
