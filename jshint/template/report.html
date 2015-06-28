@@ -84,9 +84,9 @@
 			 <td class="file" colspan="2">{{file}}</td>
 		</tr>
 		<tr>
-			<td class="error" colspan="2">{{error.length}} errors</td>
+			<td class="error" colspan="2">{{errors.length}} errors</td>
 		</tr>
-		{{#each error}}
+		{{#each errors}}
 		<tr class="error">
 			<td class="info error-left" width="120" align="center">
 				<span class="cl"> 行：<b>{{line}}</b>，列：<b>{{character}}</b>	</span>
@@ -97,6 +97,33 @@
 			</td>
 		</tr>
 		{{/each}}
+		{{#if unused}}
+		<tr>
+			<td class="error" colspan="2">{{../unused.length}} unused</td>
+		</tr>
+			{{#each unused}}
+		<tr>
+			<td class="info error-left" width="120" align="center">
+				<span class="cl"> 行：<b>{{line}}</b>，列：<b>{{character}}</b>	</span>
+			</td>
+			<td>
+				<span class="reason">变量 <b>{{name}}</b> 未使用 </span>
+			</td>
+		</tr>
+			{{/each}}
+		{{/if}}
+		{{#if globals}}
+		<tr>
+			<td class="error" colspan="2">{{../globals.length}} global</td>
+		</tr>
+			{{#each globals}}
+		<tr>
+			<td class="info error-left" colspan="2">
+				<span>{{this}}</span>
+			</td>
+		</tr>
+			{{/each}}
+		{{/if}}
 	</table>
 	{{/each}}
  </body>
