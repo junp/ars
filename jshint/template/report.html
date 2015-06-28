@@ -61,31 +61,43 @@
 	display:block;
 	border:none;
   }
+  td span.cl b{
+	color:#199e24;  
+  }
   tr.error{
   }
-  tr.error span.reason{
+  span.reason b.desc{
 	color:red;  
+  }
+  span.reason b{
+ 	color:#8951C5; 
   }
   td span.nobor{
  	border:none; 
   }
   </style>
  </head>
-
  <body>
-	 {{#each reports}}
-  <table class="report">
-	<tr>
-		<td class="file" colspan="2">{{file}}</td>
-	</tr>
-	<tr>
-		<td class="error" colspan="2">{{error.length}} errors</td>
-	</tr>
-	{{#each error}}
-	<tr class="error"><td class="info error-left" width="120" align="center"><span class="cl">行：<b style="color:#199E24;">{{line}}</b>，列：<b style="color:#199E24;">{{character}}</b></span></td><td> <span class="reason">{{code}}：{{reason}} </span><span class="nobor"> <b style="color:#53AEC5;">代码行</b>: {{evidence}}</span></td></tr>
+	 {{#each reports}} 
+	 <table class="report">
+		 <tr>
+			 <td class="file" colspan="2">{{file}}</td>
+		</tr>
+		<tr>
+			<td class="error" colspan="2">{{error.length}} errors</td>
+		</tr>
+		{{#each error}}
+		<tr class="error">
+			<td class="info error-left" width="120" align="center">
+				<span class="cl"> 行：<b>{{line}}</b>，列：<b>{{character}}</b>	</span>
+			</td>
+			<td>
+				<span class="reason"><b>{{code}}</b>：<b class="desc">{{reason}}</b> </span>
+				<span class="nobor"> <b style="color:#53AEC5;">源码</b>: {{evidence}}</span>
+			</td>
+		</tr>
+		{{/each}}
+	</table>
 	{{/each}}
-	<tr>
-  </table>
-  {{/each}}
  </body>
 </html>
