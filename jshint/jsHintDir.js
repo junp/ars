@@ -29,7 +29,8 @@ var jshintFiles = function(list){
 
 	list.forEach(function(el, idx){
 		jshint(fs.readFileSync(el.fullPath, 'utf8'))
-		jshintErrors.push({file: el.path, error: jshint.errors})
+		var data = jshint.data()
+		jshintErrors.push({file: el.path,options: data.options,globals: data.globals,unused: data.unused, errors: jshint.errors})
 	})
 
 	deferred.resolve()
@@ -37,11 +38,12 @@ var jshintFiles = function(list){
 	return deferred.promise
 }
 
-var generateReport = function(reports){
+var generateReport = function(jshintErrors){
 	var tpl = fs.readFileSync('template/report.html', 'utf8')
 	var template = handlebars.compile(tpl)
-	var html = template({reports: reports})
+	var html = template({reports:jshintErrors})
 	console.log(html)
+	console.log(jshintErrors[0])
 }
 
 var promise = getFileList('testCode')
@@ -50,7 +52,6 @@ promise.then(function(){
 })
 .then(function(){
 	generateReport(jshintErrors)
-	console.log(jshintErrors[0].error)
 })
 
 
