@@ -2,108 +2,112 @@
 <html>
  <head>
   <title> jsHint Report </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="Generator" content="EditPlus">
   <meta name="Author" content="">
   <meta name="Keywords" content="">
   <meta name="Description" content="">
-  <style>
-  html,body{
-  margin:0;
-  padding:0;
-  font-size:15px;
-  background:#272721;
-  }
-  .report{
-	border-collapse:collapse;border-spacing:0;
-	color:#eee;
-	width:90%;
-	margin:0 auto;
-  }
-  .report td.file{
-	color:#f8f8f2;
-	font-size:20px;
-	font-weight:bold;
-  }
-  .report td.error{
-	color:red;
-	text-indent:5px;
-	font-weight:bold;
-	background:#000;
-  }
-  .report td.error-left{
-	border-left:1px solid red;
-  }
-  .report td.info{
-	color:#eee;
-	font-size:12px;
-  }
-  .report td.undef{
-	color:#ff0;
-	text-indent:5px;
-	font-weight:bold;
-  }
-  .report td{padding:5px;border:1px solid #333;}
-  .report td span{font-size:13px;padding:0 5px 0 5px;border-right:1px solid #555;}
-  .report td.undef-left{
-	border-left:1px solid #ff0;
-  }
-  .report td.unused{
-	color:#ff8040;
-	text-indent:5px;
-	font-weight:bold;
-	border-left:2px solid #ff8040;
-	background:#000;
-  }
-  .report td.unused-left{
-	border-left:1px solid #ff8040;
-  }
-  td span.cl{
-	display:block;
-	border:none;
-  }
-  td span.cl b{
-	color:#199e24;  
-  }
-  tr.error{
-  }
-  span.reason b.desc{
-	color:red;  
-  }
-  span.reason b{
- 	color:#8951C5; 
-  }
-  td span.nobor{
- 	border:none; 
-  }
-  </style>
+<style>
+html,body{
+margin:0;
+padding:0;
+font-size:15px;
+background:#272721;
+}
+.report{
+border-collapse:collapse;border-spacing:0;
+color:#eee;
+width:90%;
+margin:0 auto;
+}
+.report td.file{
+  color:#ffff00;
+  font-size:20px;
+  font-weight:bold;
+  border-left:2px solid #000 ;
+  background:#000;
+}
+.report tr.error{}
+.report tr.error td.header{
+  color:red;
+  text-indent:5px;
+  font-weight:bold;
+  background: #151515;
+}
+.report tr.error .border-left{
+  border-left:2px solid red;
+}
+.report tr.warning{}
+.report tr.warning td.header{
+  color:#ff8040;
+  text-indent:5px;
+  font-weight:bold;
+  background: #151515;
+}
+.report tr.warning .border-left{
+  border-left:2px solid #ff0;
+}
+.report tr.globals{}
+.report tr.globals td.header{
+  color:#ff8040;
+  text-indent:5px;
+  font-weight:bold;
+  background: #151515;
+}
+.report tr.globals .border-left{
+  border-left:2px solid #aae3ff;
+}
+
+.report td{padding:5px;border:1px solid #333;}
+.report td span{font-size:13px;padding:0 5px 0 5px;border-right:1px solid #555;}
+
+td span.cl{
+display:block;
+border:none;
+}
+td span.cl b{
+color:#199e24;
+}
+span.reason b.desc{
+color:red;
+}
+span.reason b{
+ color:#8951C5;
+}
+td span.nobor{
+ border:none;
+}
+</style>
  </head>
  <body>
-	 {{#each reports}} 
+	 {{#each reports}}
 	 <table class="report">
 		 <tr>
-			 <td class="file" colspan="2">{{file}}</td>
+			 <td class="file" colspan="2"><span></span>{{file}} <span class="nobor" style="color:#008000;">{{pass errors unused 'pass✓'}}</span></td>
 		</tr>
-		<tr>
-			<td class="error" colspan="2">{{errors.length}} errors</td>
+    {{#if errors}}
+		<tr class="error">
+			<td class="header border-left" colspan="2">错误：{{errors.length}}</td>
 		</tr>
 		{{#each errors}}
 		<tr class="error">
-			<td class="info error-left" width="120" align="center">
+			<td class="border-left" width="120" align="center">
 				<span class="cl"> 行：<b>{{line}}</b>，列：<b>{{character}}</b>	</span>
 			</td>
 			<td>
 				<span class="reason"><b>{{code}}</b>：<b class="desc">{{reason}}</b> </span>
-				<span class="nobor"> <b style="color:#53AEC5;">源码</b>: {{evidence}}</span>
+				<span class="nobor"> <b style="color:#53AEC5;">源码</b>: {{substr evidence 100}}</span>
 			</td>
 		</tr>
 		{{/each}}
+    {{/if}}
 		{{#if unused}}
-		<tr>
-			<td class="error" colspan="2">{{../unused.length}} unused</td>
+		<tr class="warning">
+			<td class="header border-left" colspan="2">未使用：{{../unused.length}}</td>
 		</tr>
 			{{#each unused}}
-		<tr>
-			<td class="info error-left" width="120" align="center">
+		<tr class="warning">
+			<td class="border-left" width="120" align="center">
 				<span class="cl"> 行：<b>{{line}}</b>，列：<b>{{character}}</b>	</span>
 			</td>
 			<td>
@@ -112,17 +116,17 @@
 		</tr>
 			{{/each}}
 		{{/if}}
-		{{#if globals}}
-		<tr>
-			<td class="error" colspan="2">{{../globals.length}} global</td>
+		{{#if false}}
+		<tr class="globals">
+			<td class="globals border-left" colspan="2">全局变量：{{../globals.length}} </td>
 		</tr>
-			{{#each globals}}
-		<tr>
-			<td class="info error-left" colspan="2">
+		<tr class="globals">
+			<td class="border-left" colspan="2">
+        {{#each globals}}
 				<span>{{this}}</span>
+        {{/each}}
 			</td>
 		</tr>
-			{{/each}}
 		{{/if}}
 	</table>
 	{{/each}}
